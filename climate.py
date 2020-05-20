@@ -12,7 +12,7 @@ import voluptuous as vol
 from .connect import Adax
 from .parameters import set_param
 
-from homeassistant.components.climate import ClimateDevice, PLATFORM_SCHEMA
+from homeassistant.components.climate import ClimateEntity, PLATFORM_SCHEMA
 from homeassistant.components.climate.const import SUPPORT_TARGET_TEMPERATURE, HVAC_MODE_OFF, HVAC_MODE_HEAT
 from homeassistant.const import (
     TEMP_CELSIUS, ATTR_TEMPERATURE, PRECISION_WHOLE)
@@ -56,7 +56,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
      _LOGGER.debug("adax: Zone " + str(z_id) + " added with name " + str(z_name) + "! Current temp is " + str(z_state))
 
 
-class AdaxDevice(ClimateDevice):
+class AdaxDevice(ClimateEntity):
     """Representation of a heater."""
 
     def __init__(self, id, name, state, target, window, maxtemp, mintemp):
